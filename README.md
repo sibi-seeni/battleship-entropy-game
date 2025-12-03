@@ -4,8 +4,10 @@
 **Student Name:** Sibi Seenivasan  
 **Date:** November 2025
 
-## Video Deliverables
+## Videos for Submission
 * **Demonstration Video:**
+  
+  [![Watch Demo](https://img.shields.io/badge/▶️-Watch%20Demo-red?style=for-the-badge&logo=youtube)](#)
 * **Conceptual Video:**
 
 ---
@@ -33,7 +35,7 @@ The entropy is calculated as:
 
 $$H(S') = \log_2(|S'|)$$
 
-*Where $|S'|$ is the count of currently valid board configurations.*
+*Where `|S'|` is the count of currently valid board configurations.*
 
 ### 3. Best Strategy (Expected Information Gain)
 The AI suggests a move based on maximizing **Expected Information Gain (EIG)**.
