@@ -4,15 +4,15 @@ Exam Project for Mathematical Foundations for Data Science
 """
 
 import sys
-from entropy_utils import EntropyEngine, GRID_SIZE
+from entropy import EntropyEngine, GRID_SIZE
 from game_engine import BattleshipGame
 
 def print_header():
     print("\n" + "="*50)
-    print("      📐 ENTROPY BATTLESHIP: 6x6 EDITION 📐")
+    print("      📐 ENTROPY BATTLESHIP 🛳️: 5x5 EDITION 📐")
     print("="*50)
     print("Objective: Sink 3 ships (each Length 3) using Entropy.")
-    print("Legend:    [.] Unknown  [O] Hit  [X] Miss")
+    print("Legend:    [.] Not guessed  [O] Hit  [X] Miss")
     print("-" * 50)
 
 def render_board(game):
@@ -46,11 +46,13 @@ def main():
     
     print_header()
 
+    choice = input("Would you like strategy tips to win in the least number of turns? (y/n): ")
+
     # Main Game Loop
     turn_counter = 1
     while not game.is_game_over():
         
-        # 3. Render Board & Display Stats ---
+        # 3. Render Board & Display Stats
         render_board(game)
         
         current_entropy = ai.calculate_entropy()
@@ -60,12 +62,15 @@ def main():
         print(f"Current Entropy: {current_entropy:.4f} bits")
         print(f"Remaining Possible Configurations: {remaining_boards}")
         
-        # 4. Suggest Best Strategy ---
-        best_move = ai.get_best_move(game.played_moves)
-        if best_move:
-            print(f"💡 Strategy Tip: Guess {best_move} to maximize information gain.")
+        # 4. Suggest Best Strategy (if opted in)
+        if choice.lower() == 'y':
+            best_move = ai.get_best_move(game.played_moves)
+            if best_move:
+                print(f"Strategy Tip 💡 : Guess {best_move} to maximize information gain.")
+            else:
+                print("No more tips needed! Can you guess where the last battleships are? 🛳️")
         
-        # 5. User Input ---
+        # 5. User Input
         try:
             user_input = input("Enter coordinates (row col): ").strip()
             if user_input.lower() == 'exit':
@@ -90,9 +95,9 @@ def main():
             
             # Feedback
             if is_hit:
-                print(f"💥 HIT at ({r}, {c})!")
+                print(f"HIT 💥 at ({r}, {c})!")
             else:
-                print(f"🌊 MISS at ({r}, {c}).")
+                print(f"MISS 🌊 at ({r}, {c}).")
                 
             turn_counter += 1
 
@@ -104,7 +109,7 @@ def main():
     # End Game
     render_board(game) # Show final state
     print("\n" + "="*50)
-    print(f"🎉 VICTORY! Fleet destroyed in {turn_counter} turns. 🎉")
+    print(f"🎉 VICTORY! Fleet destroyed in {turn_counter} turns!! 🎉")
     print("="*50)
 
 if __name__ == "__main__":

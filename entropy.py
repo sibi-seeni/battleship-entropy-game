@@ -2,7 +2,7 @@ import math
 import itertools
 
 # GAME CONSTANTS
-GRID_SIZE = 6
+GRID_SIZE = 5
 SHIP_LENGTH = 3
 NUM_SHIPS = 3
 

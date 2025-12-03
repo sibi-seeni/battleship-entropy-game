@@ -1,5 +1,5 @@
 import random
-from entropy_utils import EntropyEngine, GRID_SIZE, SHIP_LENGTH, NUM_SHIPS
+from entropy import EntropyEngine, GRID_SIZE, SHIP_LENGTH, NUM_SHIPS
 
 class BattleshipGame:
     # For managing the actual gameplay, processing guesses against the secret board.
