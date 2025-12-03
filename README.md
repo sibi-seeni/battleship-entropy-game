@@ -51,4 +51,4 @@ The AI suggests a move based on maximizing **Expected Information Gain (EIG)**.
 3. Run the main script:
 
 ```bash
-python main.py
+python3 main.py
