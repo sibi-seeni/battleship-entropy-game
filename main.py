@@ -12,8 +12,29 @@ def print_header():
     print("      📐 ENTROPY BATTLESHIP: 6x6 EDITION 📐")
     print("="*50)
     print("Objective: Sink 3 ships (each Length 3) using Entropy.")
-    print("Coordinates: Enter 'Row Col' (e.g., '0 0' or '2 5')")
+    print("Legend:    [.] Unknown  [O] Hit  [X] Miss")
     print("-" * 50)
+
+def render_board(game):
+    """
+    For visualizing the current game state in the CLI.
+    """
+    print("\n   " + " ".join([str(i) for i in range(GRID_SIZE)]))  # Column headers
+    print("  +" + "-" * (GRID_SIZE * 2 - 1) + "+")
+    
+    for r in range(GRID_SIZE):
+        row_str = f"{r} |"
+        for c in range(GRID_SIZE):
+            if (r, c) in game.played_moves:
+                if (r, c) in game.secret_board:
+                    row_str += "O "  # HIT
+                else:
+                    row_str += "X "  # MISS
+            else:
+                row_str += ". "      # UNKNOWN
+        print(row_str + "|")
+    
+    print("  +" + "-" * (GRID_SIZE * 2 - 1) + "+")
 
 def main():
     # 1. Initialize the Mathematical Engine
@@ -29,20 +50,22 @@ def main():
     turn_counter = 1
     while not game.is_game_over():
         
-        # --- A. Display Current Entropy ---
+        # 3. Render Board & Display Stats ---
+        render_board(game)
+        
         current_entropy = ai.calculate_entropy()
         remaining_boards = len(ai.current_possible_boards)
         
         print(f"\n--- Turn {turn_counter} ---")
-        print(f"📊 Current Entropy: {current_entropy:.4f} bits")
-        print(f"📉 Remaining Possible Configurations: {remaining_boards}")
+        print(f"Current Entropy: {current_entropy:.4f} bits")
+        print(f"Remaining Possible Configurations: {remaining_boards}")
         
-        # --- B. Suggest Best Strategy ---
+        # 4. Suggest Best Strategy ---
         best_move = ai.get_best_move(game.played_moves)
         if best_move:
             print(f"💡 Strategy Tip: Guess {best_move} to maximize information gain.")
         
-        # --- C. User Input ---
+        # 5. User Input ---
         try:
             user_input = input("Enter coordinates (row col): ").strip()
             if user_input.lower() == 'exit':
@@ -50,20 +73,19 @@ def main():
                 
             parts = user_input.split()
             if len(parts) != 2:
-                print("Error: Please enter two numbers separated by a space.")
+                print("⚠️  Error: Please enter two numbers separated by a space.")
                 continue
                 
             r, c = int(parts[0]), int(parts[1])
             
             if not (0 <= r < GRID_SIZE and 0 <= c < GRID_SIZE):
-                print(f"Error: Coordinates must be between 0 and {GRID_SIZE-1}.")
+                print(f"⚠️  Error: Coordinates must be between 0 and {GRID_SIZE-1}.")
                 continue
                 
-            # --- D. Process Logic ---
+            # 6. Process Logic ---
             is_hit = game.process_guess(r, c)
             
-            # --- E. Update Entropy State ---
-            # This is to update the S' set based on the new information
+            # 7. Update Entropy State ---
             ai.update_entropy_state((r, c), is_hit)
             
             # Feedback
@@ -80,6 +102,7 @@ def main():
             print(f"An error occurred: {e}")
 
     # End Game
+    render_board(game) # Show final state
     print("\n" + "="*50)
     print(f"🎉 VICTORY! Fleet destroyed in {turn_counter} turns. 🎉")
     print("="*50)
