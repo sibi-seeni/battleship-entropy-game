@@ -1,16 +1,16 @@
-# Battleship with Entropy Calculation
+# Battleship Game with Entropy Calculation
 **EGN 5447 - Mathematical Foundations for Data Science - Exam Project**
 
 **Student Name:** Sibi Seenivasan  
 **Date:** November 2025
 
-## 📹 Video Deliverables
+## Video Deliverables
 * **Demonstration Video:**
 * **Conceptual Video:**
 
 ---
 
-## 📖 Project Overview
+## Project Overview
 This project implements a modified version of the **Battleship** game to demonstrate the concept of **Entropy** in an information-seeking context. 
 
 The game features a CLI (Command Line Interface) that visually updates a $6 \times 6$ grid after every turn. Hits are marked as `O`, Misses as `X`, and unexplored cells as `.`.
@@ -43,7 +43,7 @@ The AI suggests a move based on maximizing **Expected Information Gain (EIG)**.
 
 ---
 
-## 🚀 How to Run
+## How to Run
 1. Make sure to have Python 3 installed.
 2. Navigate to the project directory.
 3. Run the main script:
