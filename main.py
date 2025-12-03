@@ -9,10 +9,10 @@ from game_engine import BattleshipGame
 
 def print_header():
     print("\n" + "="*50)
-    print("      📐 ENTROPY BATTLESHIP 🛳️: 5x5 EDITION 📐")
+    print("     📐 ENTROPY BATTLESHIP 🛳️: 5x5 EDITION 📐")
     print("="*50)
     print("Objective: Sink 3 ships (each Length 3) using Entropy.")
-    print("Legend:    [.] Not guessed  [O] Hit  [X] Miss")
+    print("Legend:    [.] Not guessed  [1] Hit  [X] Miss")
     print("-" * 50)
 
 def render_board(game):
@@ -27,7 +27,7 @@ def render_board(game):
         for c in range(GRID_SIZE):
             if (r, c) in game.played_moves:
                 if (r, c) in game.secret_board:
-                    row_str += "O "  # HIT
+                    row_str += "1 "  # HIT
                 else:
                     row_str += "X "  # MISS
             else:
