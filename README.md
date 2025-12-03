@@ -15,10 +15,10 @@
 ## Project Overview
 This project implements a modified version of the **Battleship** game to demonstrate the concept of **Entropy** in an information-seeking context. 
 
-The game features a CLI (Command Line Interface) that visually updates a $6 \times 6$ grid after every turn. Hits are marked as `O`, Misses as `X`, and unexplored cells as `.`.
+The game features a CLI (Command Line Interface) that visually updates a $5 \times 5$ grid after every turn. Hits are marked as `O`, Misses as `X`, and unexplored cells as `.`.
 
 ### The Game Parameters
-* **Grid:** 6x6
+* **Grid:** 5x5
 * **Ships:** 3 Ships, each of length 3.
 * **Objective:** Find all ship coordinates in the fewest turns.
 
