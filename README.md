@@ -7,9 +7,9 @@
 ## Videos for Submission
 * **Demonstration Video:**
   
-  [![Watch Demo](https://img.shields.io/badge/▶️-Watch%20Demo-red?style=for-the-badge&logo=youtube)](#)
+  [![Watch Demo](https://img.shields.io/badge/▶️-Watch%20Demo-red?style=for-the-badge&logo=youtube)](https://www.youtube.com/watch?v=PbMUiIyOWxA)
 * **Conceptual Video:**
-
+  [Watch the explanation of the concepts!](https://youtu.be/V_NC4ZOgzvk)
 ---
 
 ## Project Overview

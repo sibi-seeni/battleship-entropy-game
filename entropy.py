@@ -73,7 +73,7 @@ class EntropyEngine:
     def calculate_entropy(self):
         """
         For calculating Entropy of the current state space.
-        Assumption: Uniform distribution (Principle of Indifference).
+        Assumption: Uniform distribution (Principle of Independence).
         Formula: H(S) = log2(|S|)
         """
         count = len(self.current_possible_boards)
